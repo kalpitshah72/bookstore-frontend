@@ -1,5 +1,9 @@
 import bookImage from "../../../assets/images/book.png";
 
+const delay = (delayInms: number) => {
+  return new Promise((resolve) => setTimeout(resolve, delayInms));
+};
+
 const listBook = async (): Promise<Book[]> => {
   const books: Book[] = [];
   for (let i = 1; i <= 100; i++) {
@@ -12,6 +16,7 @@ const listBook = async (): Promise<Book[]> => {
       currency: "원",
     });
   }
+  await delay(2000);
   return books;
 };
 
