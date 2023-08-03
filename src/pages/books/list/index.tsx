@@ -23,7 +23,7 @@ const BooksPage: FC = () => {
 
   return (
     <>
-      <p className="text-3xl	font-bold">Books</p>
+      <p className="text-3xl	font-bold py-2">Books</p>
       <div>
         <BookList />
       </div>
