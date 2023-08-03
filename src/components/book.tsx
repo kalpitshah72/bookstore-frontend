@@ -1,17 +1,24 @@
 import { FC } from "react";
-import bookImage from "../assets/images/book.png";
 
-const Book: FC<Book> = () => {
+const Book: FC<Book> = ({ id, name, discount, image, price, currency }) => {
   return (
-    <div className="book">
-      <img src={bookImage} />
-      <p className="book-name">레이블라우스</p>
-      <div className="flex">
-        <div>
-          <p>10%</p>
-        </div>
-        <div>
-          <p>57,600</p>
+    <div className="w-full" key={id}>
+      <div className="w-full mb-1.5">
+        <img src={image} className="w-full" />
+      </div>
+      <div className="mx-2">
+        <p className="text-start mb-3">{name}</p>
+        <div className="flex justify-between">
+          <div>
+            <p className="text-red-600 font-bold">{discount}%</p>
+          </div>
+          <div>
+            <p className="font-bold">
+              {price}
+              &nbsp;
+              {currency}
+            </p>
+          </div>
         </div>
       </div>
     </div>

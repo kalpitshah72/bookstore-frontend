@@ -1,21 +1,34 @@
-import { FC } from "react";
-import Book from "../../../components/book";
+import { FC, useEffect } from "react";
+import listBook from "../../../services/apis/book/list-book";
+import BookList from "./components/book-list";
+import { useRecoilState } from "recoil";
+import { bookListAtom } from "../../../store/recoil/atoms/bookListAtom";
 
-const Books: FC = () => {
+const BooksPage: FC = () => {
+  const [, setBookList] = useRecoilState(bookListAtom);
+
+  const init = async () => {
+    try {
+      const res = await listBook();
+      console.log(res);
+      setBookList(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    init();
+  }, []);
+
   return (
     <>
-      <h1>Books</h1>
+      <p className="text-3xl	font-bold">Books</p>
       <div>
-        <Book
-          id={3}
-          name="novel"
-          image="https://example.com/path"
-          price={100}
-          discount={10}
-        />
+        <BookList />
       </div>
     </>
   );
 };
 
-export default Books;
+export default BooksPage;

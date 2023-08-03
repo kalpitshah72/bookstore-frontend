@@ -4,4 +4,5 @@ type Book = {
   image: string;
   price: number;
   discount: number;
+  currency: string;
 };
