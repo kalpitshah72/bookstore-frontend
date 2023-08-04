@@ -6,7 +6,7 @@ const delay = (delayInms: number) => {
 
 const listBook = async (): Promise<Book[]> => {
   const books: Book[] = [];
-  for (let i = 1; i <= 100; i++) {
+  for (let i = 1; i <= 10; i++) {
     books.push({
       id: i,
       name: "레이블라우스",

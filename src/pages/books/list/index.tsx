@@ -11,10 +11,9 @@ const BooksPage: FC = () => {
   const init = async () => {
     try {
       const res = await listBook();
-      console.log(res);
       setBookList(res);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -29,18 +28,16 @@ const BooksPage: FC = () => {
 
   return (
     <>
-      <div className="px-2">
-        <p className="text-3xl	font-bold py-2">Books</p>
-        <div>
-          <InfiniteScroll
-            dataLength={bookList.length}
-            next={fetchMoreData}
-            hasMore={true}
-            loader={<h4 className="px-1">Loading...</h4>}
-          >
-            <BookList />
-          </InfiniteScroll>
-        </div>
+      <p className="text-3xl font-bold py-2">Books</p>
+      <div>
+        <InfiniteScroll
+          dataLength={bookList.length}
+          next={fetchMoreData}
+          hasMore={true}
+          loader={<h4 className="px-1">Loading...</h4>}
+        >
+          <BookList />
+        </InfiniteScroll>
       </div>
     </>
   );
